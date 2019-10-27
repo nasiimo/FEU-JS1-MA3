@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <script type="text/javascript">
+      var re = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
+      function testPhoneNumber(phoneInput) {
+        var OK = re.exec(phoneInput.value);
+        if (!OK)
+          window.alert(phoneInput.value + ' isn\'t a phone number with area code!');
+        else
+          window.alert('Thanks, your phone number is ' + OK[0]);
+      }
+
+      var email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      function testEmail(emailInput){
+        var KK = re.exec(emailInput.value);
+        if (!KK)
+        window.alert(emailInput.value + "this is not an email!");
+        else {
+          window.alert("Thanks for your email");
+        }
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <p>Enter your phone number.</p>
+    <form action="#">
+      <input id="phone" placeholder="Phonenumber"><button onclick="testPhoneNumber(document.getElementById('phone'));">Check</button>
+      <input id="email" placeholder="Email"><button onclick="testEmail(document.getElementById('email'));">Check</button>
+      <input id="fname" placeholder="First name" required>
+      <input id="lname" placeholder="Last name" required>
+
+
+    </form>
+  </body>
+</html>
